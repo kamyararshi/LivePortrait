@@ -55,3 +55,27 @@ class ArgumentConfig(PrintableConfig):
     server_name: Optional[str] = "127.0.0.1"  # set the local server name, "0.0.0.0" to broadcast all
     flag_do_torch_compile: bool = False  # whether to use torch.compile to accelerate generation
     gradio_temp_dir: Optional[str] = None  # directory to save gradio temp files
+
+    # ########## cam args ##########
+    # config: str='fomm/config/vox-adv-256.yaml'
+    # checkpoint: str='vox-cpk.pth.tar'
+
+    # relative: bool=False
+    # adapt_scale: bool=False
+    # no_pad: bool=False
+    # enc_downscale: int=1
+
+    # virt_cam: int=0
+    # no_stream: Optional[bool]=True
+
+    # verbose: bool=False
+    # hide_rect: bool=False
+
+    # avatars: str="./avatars"
+    # is_worker: bool=False
+    # is_client: bool=False
+    # in_port: int=5557
+    # out_port: int=5558
+    # in_addr: Optional[str]=None
+    # out_addr: Optional[str]=None
+    # jpg_quality: int=95
