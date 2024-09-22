@@ -22,7 +22,7 @@ class ArgumentConfig(PrintableConfig):
     flag_crop_driving_video: bool = False  # whether to crop the driving video, if the given driving info is a video
     device_id: int = 0  # gpu device id
     flag_force_cpu: bool = False  # force cpu inference, WIP!
-    flag_normalize_lip: bool = False  # whether to let the lip to close state before animation, only take effect when flag_eye_retargeting and flag_lip_retargeting is False
+    flag_normalize_lip: bool = True  # whether to let the lip to close state before animation, only take effect when flag_eye_retargeting and flag_lip_retargeting is False
     flag_source_video_eye_retargeting: bool = False  # when the input is a source video, whether to let the eye-open scalar of each frame to be the same as the first source frame before the animation, only take effect when flag_eye_retargeting and flag_lip_retargeting is False, may cause the inter-frame jittering
     flag_eye_retargeting: bool = False  # not recommend to be True, WIP; whether to transfer the eyes-open ratio of each driving frame to the source image or the corresponding source frame
     flag_lip_retargeting: bool = False  # not recommend to be True, WIP; whether to transfer the lip-open ratio of each driving frame to the source image or the corresponding source frame
@@ -30,7 +30,7 @@ class ArgumentConfig(PrintableConfig):
     flag_relative_motion: bool = True # whether to use relative motion
     flag_pasteback: bool = True  # whether to paste-back/stitch the animated face cropping from the face-cropping space to the original image space
     flag_do_crop: bool = True  # whether to crop the source portrait or video to the face-cropping space
-    driving_option: Literal["expression-friendly", "pose-friendly"] = "expression-friendly" # "expression-friendly" or "pose-friendly"; "expression-friendly" would adapt the driving motion with the global multiplier, and could be used when the source is a human image
+    driving_option: Literal["expression-friendly", "pose-friendly"] = "pose-friendly" # "expression-friendly" or "pose-friendly"; "expression-friendly" would adapt the driving motion with the global multiplier, and could be used when the source is a human image
     driving_multiplier: float = 1.0 # be used only when driving_option is "expression-friendly"
     driving_smooth_observation_variance: float = 3e-7  # smooth strength scalar for the animated video when the input is a source video, the larger the number, the smoother the animated video; too much smoothness would result in loss of motion accuracy
     audio_priority: Literal['source', 'driving'] = 'driving'  # whether to use the audio from source or driving video
@@ -55,27 +55,3 @@ class ArgumentConfig(PrintableConfig):
     server_name: Optional[str] = "127.0.0.1"  # set the local server name, "0.0.0.0" to broadcast all
     flag_do_torch_compile: bool = False  # whether to use torch.compile to accelerate generation
     gradio_temp_dir: Optional[str] = None  # directory to save gradio temp files
-
-    # ########## cam args ##########
-    # config: str='fomm/config/vox-adv-256.yaml'
-    # checkpoint: str='vox-cpk.pth.tar'
-
-    # relative: bool=False
-    # adapt_scale: bool=False
-    # no_pad: bool=False
-    # enc_downscale: int=1
-
-    # virt_cam: int=0
-    # no_stream: Optional[bool]=True
-
-    # verbose: bool=False
-    # hide_rect: bool=False
-
-    # avatars: str="./avatars"
-    # is_worker: bool=False
-    # is_client: bool=False
-    # in_port: int=5557
-    # out_port: int=5558
-    # in_addr: Optional[str]=None
-    # out_addr: Optional[str]=None
-    # jpg_quality: int=95
